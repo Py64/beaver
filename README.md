@@ -7,7 +7,7 @@ Package manager written in Haskell.
 
 # Building
 ```
-mkdir out
+mkdir out src/.o src/.hi
 ghc --make src/chameleon.hs -o out/chameleon -odir src/.o -hidir src/.hi
 ghc --make src/beaver.hs -o out/beaver -odir src/.o -hidir src/.hi
 ```
