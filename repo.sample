@@ -1,0 +1,3 @@
+# *.repo files are mirrorlists only.
+# $repo is filename (without extension).
+http://domain.tld/$repo/$arch

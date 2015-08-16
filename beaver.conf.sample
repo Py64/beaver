@@ -1,0 +1,6 @@
+## beaver.conf
+## Main configuration of beaver package manager
+MD5Checking  = yes
+Architecture = x86_64
+CacheDir     = /var/cache/beaver/pkg/
+DatabasesDir = /var/cache/beaver/db/
