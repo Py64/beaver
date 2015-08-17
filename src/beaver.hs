@@ -11,9 +11,10 @@ main = do
         then usage        >> exit
         else parse (args !! 0)
 
-parse "help"    = usage   >> exit
-parse "version" = version >> exit
-parse ""        = usage   >> exit
+parse "help"       = usage   >> exit
+parse "version"    = version >> exit
+parse ""           = usage   >> exit
+parse "installpkg" = installpkg >> exit
 
 continueIfRoot = do
                   isRoot <- fmap (== 0) getRealUserID
@@ -26,6 +27,13 @@ usage      = do
               putStrLn "\tsync\t\t\tsynchronizes databases"
               putStrLn "\tinstall\t\t\tinstalls package"
               putStrLn "\tlist\t\t\tlists packages from all repositories"
+              putStrLn "\tinstallpkg\t\tinstalls local package"
 version    = putStrLn "beaver 0.1"
-getprop s = return (readProcess "beaver-config" [s] "")
+installpkg = do
+              args <- getArgs
+              pkgname <- (readProcess "beaver-pkgname" [(args !! 1)] "")
+              system ("tar xJf " ++ (args !! 1) ++ " -C /tmp/")
+              meta <- readFile ("/tmp/" ++ pkgname ++ "/.META")
+              -- not implemented
+getprop s f = return (readProcess "beaver-parse" [s, f] "")
 exit = exitWith ExitSuccess

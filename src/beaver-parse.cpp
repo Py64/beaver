@@ -29,9 +29,9 @@ public:
   }
 };
 int main (int argc, char* argv[]) {
-  if(argc == 1) {std::cout << "No property provided."; return 1;}
+  if(argc == 1) {std::cout << "No property or file provided."; return 1;}
   std::string line;
-  std::ifstream conffile ("/etc/beaver.conf");
+  std::ifstream conffile (argv[2]);
   if (conffile.is_open())
   {
     while ( std::getline (conffile,line) )
