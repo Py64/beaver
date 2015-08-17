@@ -33,3 +33,4 @@ cp beaver-parse beaver chameleon beaver-pkgname /usr/bin/
 - Implement package downloading
 - Add build_pkg (top secret name) tool.
 - Add repo_maintaine (top secret name) tool.
+- Introduce .tama (from polish: dam) extension.
