@@ -18,7 +18,7 @@ parse ""        = usage   >> exit
 continueIfRoot = do
                   isRoot <- fmap (== 0) getRealUserID
                   if isRoot then return ()
-                  else putStrLn "Chameleon must be runned as root." >> exit
+                  else putStrLn "Beaver must be runned as root." >> exit
 usage      = do
               putStrLn "Usage: beaver <operation> [...]"
               putStrLn "\thelp\t\t\tdisplays this message"
@@ -27,5 +27,5 @@ usage      = do
               putStrLn "\tinstall\t\t\tinstalls package"
               putStrLn "\tlist\t\t\tlists packages from all repositories"
 version    = putStrLn "beaver 0.1"
-
+getprop s = return (readProcess "beaver-config" [s] "")
 exit = exitWith ExitSuccess
