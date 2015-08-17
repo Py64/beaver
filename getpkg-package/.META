@@ -1,0 +1,9 @@
+arch                          = any
+desc                          = A simple script to download AUR packages
+version                       = 1.00
+revision                      = 1
+files                         = /usr/bin/getpkg /usr/bin/getpkg.py
+install                       = no
+depends                       = python python-urllib3
+optional-depends              = 
+conflicts                     = 
