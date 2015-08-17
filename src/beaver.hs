@@ -2,8 +2,10 @@ import System.Environment
 import System.Exit
 import System.IO
 import Data.List
-
+import System.Posix.User
+import System.Process
 main = do
+        continueIfRoot
         args <- getArgs
         if (length args) == 0
         then usage        >> exit
@@ -13,6 +15,10 @@ parse "help"    = usage   >> exit
 parse "version" = version >> exit
 parse ""        = usage   >> exit
 
+continueIfRoot = do
+                  isRoot <- fmap (== 0) getRealUserID
+                  if isRoot then return ()
+                  else putStrLn "Chameleon must be runned as root." >> exit
 usage      = do
               putStrLn "Usage: beaver <operation> [...]"
               putStrLn "\thelp\t\t\tdisplays this message"
