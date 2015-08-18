@@ -4,9 +4,16 @@ Package manager written in Haskell.
 # Warning! Chameleon included!
 Chameleon is used to add (or remove) repositories.
 
+# ...and with uncomplete Hummingbird!
+Hummingbird in its current state probably won't build.
+
+What it will do? Simple task: build package and pack it.
+
 # Requirements
-- haskell-split
-- haskell-missingh
+- ghc (make)
+- haskell-split (make)
+- haskell-missingh (make)
+- tar
 
 # Building
 ```
@@ -31,6 +38,6 @@ cp beaver-parse beaver chameleon beaver-pkgname /usr/bin/
 - Implement package uninstalling
 - Implement database synchronizing
 - Implement package downloading
-- Add build_pkg (top secret name) tool.
+- Expand hummingbird tool.
 - Add repo_maintaine (top secret name) tool.
 - Introduce .tama (from polish: dam) extension.
