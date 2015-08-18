@@ -1,8 +1,0 @@
-name                               = example
-desc                               = Example package
-arch                               = any
-depends                            = 
-optional-depends                   = 
-version                            = 1.00
-revision                           = 1
-install                            = yes
