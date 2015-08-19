@@ -4,16 +4,20 @@ Package manager written in Haskell.
 # Warning! Chameleon included!
 Chameleon is used to add (or remove) repositories.
 
-# ...and with uncomplete Hummingbird!
-Hummingbird in its current state probably won't build.
-
-What it will do? Simple task: build package and pack it.
-
-# Requirements
+# Dependencies
 - ghc (make)
 - haskell-split (make)
 - haskell-missingh (make)
 - tar
+- sqlite
+- haskell-sqlite-simple (make)
+- haskell-text
+
+In shortcut:
+```
+pacman -Sy ghc haskell-split haskell-missingh tar sqlite
+cabal install sqlite-simple
+```
 
 # Building
 ```
@@ -29,6 +33,8 @@ g++ ../src/beaver-pkgname.cpp -o ./beaver-pkgname
 EXECUTE AS ROOT IN out DIRECTORY
 ```
 cp beaver-parse beaver chameleon beaver-pkgname /usr/bin/
+mkdir /var/lib/beaver /var/cache/beaver /var/cache/beaver/db /var/cache/beaver/pkg
+sqlite3 /var/lib/beaver/pkgs.db "CREATE TABLE installed_pkgs(name varchar(200), desc varchar(10000), repo varchar(200), arch varchar(100), version varchar(200), revision varchar(200), conflicts varchar(25000), depends varchar(25000));CREATE TABLE files (owner varchar(200), path varchar(25000));"
 ```
 
 # TODO
@@ -38,6 +44,5 @@ cp beaver-parse beaver chameleon beaver-pkgname /usr/bin/
 - Implement package uninstalling
 - Implement database synchronizing
 - Implement package downloading
-- Expand hummingbird tool.
 - Add repo_maintaine (top secret name) tool.
-- Introduce .tama (from polish: dam) extension.
+- Introduce .hollow extension.
